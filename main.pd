@@ -1,5 +1,5 @@
-#N canvas 205 108 799 358 10;
-#X text 49 24 frozen scape 2016 (C) Chikashi Miyama;
+#N canvas 253 653 799 358 10;
+#X text 53 64 frozen scape 2016 (C) Chikashi Miyama;
 #N canvas 79 134 411 181 hann-window 0;
 #N canvas 0 22 450 300 (subpatch) 0;
 #X array hann 2048 float 1;
@@ -270,41 +270,83 @@
 2.8193e-05 1.87755e-05 9.38773e-06;
 #X coords 0 1 2047 0 300 100 1 0 0;
 #X restore 41 38 graph;
-#X restore 279 59 pd hann-window;
-#X obj 174 254 dac~;
-#X obj 43 167 pan2~;
-#X obj 164 191 pan2~;
-#X obj 271 182 pan2~;
-#X msg 70 140 -0.8;
-#X msg 304 159 0.8;
-#X msg 191 167 0;
-#X obj 189 76 loadbang;
-#X obj 276 234 loadbang;
-#X msg 277 263 \; pd dsp 1;
-#X msg 423 185 trans \$1;
-#X msg 360 184 speed \$1;
-#X msg 554 189 trans \$1;
-#X msg 491 188 speed \$1;
-#X msg 682 192 trans \$1;
-#X msg 619 191 speed \$1;
-#X obj 431 48 vsl 15 128 -12 12 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5400 1;
-#X floatatom 355 161 5 0 0 0 - - -, f 5;
-#X floatatom 487 157 5 0 0 0 - - -, f 5;
-#X obj 359 235 s sample1-cont;
-#X obj 496 243 s sample2-cont;
-#X obj 618 239 s sample3-cont;
-#X obj 559 45 vsl 15 128 -12 12 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5600 1;
-#X obj 36 89 *~ 0.3, f 8;
-#X floatatom 620 161 5 0 0 0 - - -, f 5;
-#X obj 692 49 vsl 15 128 -12 12 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3500 1;
-#X obj 268 153 *~ 0.15;
-#X obj 167 144 *~ 2;
-#X obj 271 125 pvoc~ sample3 music.wav;
-#X obj 36 52 pvoc~ sample1 conversation.wav;
-#X obj 163 109 pvoc~ sample2 traffic.wav;
+#X restore 283 99 pd hann-window;
+#X obj 178 294 dac~;
+#X obj 47 207 pan2~;
+#X obj 168 231 pan2~;
+#X obj 275 222 pan2~;
+#X msg 74 180 -0.8;
+#X msg 308 199 0.8;
+#X msg 195 207 0;
+#X obj 193 116 loadbang;
+#X obj 280 274 loadbang;
+#X msg 281 303 \; pd dsp 1;
+#X msg 427 225 trans \$1;
+#X msg 364 224 speed \$1;
+#X msg 558 229 trans \$1;
+#X msg 495 228 speed \$1;
+#X msg 686 232 trans \$1;
+#X msg 623 231 speed \$1;
+#X obj 435 88 vsl 15 128 -12 12 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 359 201 5 0 0 0 - - -, f 5;
+#X floatatom 491 197 5 0 0 0 - - -, f 5;
+#X obj 363 275 s sample1-cont;
+#X obj 500 283 s sample2-cont;
+#X obj 622 279 s sample3-cont;
+#X obj 563 85 vsl 15 128 -12 12 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 40 129 *~ 0.3, f 8;
+#X floatatom 624 201 5 0 0 0 - - -, f 5;
+#X obj 696 89 vsl 15 128 -12 12 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 272 193 *~ 0.15;
+#X obj 171 184 *~ 2;
+#X obj 275 165 pvoc~ sample3 music.wav;
+#X obj 40 92 pvoc~ sample1 conversation.wav;
+#X obj 167 149 pvoc~ sample2 traffic.wav;
+#X obj 574 57 comport 1 38400;
+#X msg 540 -6 devices;
+#X msg 595 10 devicename /dev/tty.usbmodem14141;
+#X obj 473 27 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 623 33 close;
+#N canvas 0 22 579 537 decode 1;
+#X obj 98 40 inlet;
+#X obj 99 86 moses 128;
+#X floatatom 185 132 5 0 0 0 - - -, f 5;
+#X obj 103 217 +;
+#X obj 184 161 >> 4;
+#X obj 184 186 & 3;
+#X floatatom 186 225 5 0 0 0 - - -, f 5;
+#X obj 184 108 t f f;
+#X obj 252 167 & 7;
+#X obj 252 198 << 7;
+#X obj 82 275 f;
+#X obj 82 309 route 1 2 3;
+#X obj 68 377 vsl 15 128 0 1024 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 98 377 vsl 15 128 0 1024 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1100 1;
+#X obj 132 377 vsl 15 128 0 1024 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 10 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 1;
+#X connect 7 0 2 0;
+#X connect 7 1 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 3 1;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X connect 11 2 14 0;
+#X restore 610 87 pd decode;
 #X connect 3 0 2 0;
 #X connect 3 1 2 1;
 #X connect 4 0 2 0;
@@ -336,3 +378,7 @@
 #X connect 30 0 28 0;
 #X connect 31 0 25 0;
 #X connect 32 0 29 0;
+#X connect 34 0 33 0;
+#X connect 35 0 33 0;
+#X connect 36 0 33 0;
+#X connect 37 0 33 0;
