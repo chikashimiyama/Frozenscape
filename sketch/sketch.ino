@@ -1,7 +1,6 @@
 void setup() {
-  analogReference(EXTERNAL);
   Serial.begin(38400);
-  
+  analogReference(EXTERNAL);
 }
 
 void loop() {
